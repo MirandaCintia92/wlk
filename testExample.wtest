@@ -1,0 +1,32 @@
+import pilotosDeCarrera.*
+import autosDeCarrera.*
+import centroDeSimulacion.*
+
+
+
+describe "test de centro de simulacion" {
+
+  test "El vortex no puede volver a usarse luego de que se utilizó 3 veces consecutivas sin cargar la batería." {
+    vortex.esUsadoPor(novaIshari)
+    vortex.esUsadoPor(novaIshari)
+    vortex.esUsadoPor(novaIshari)
+
+    assert.notThat(vortex.puedeUsarse())
+  }
+
+  test "Que en el modo intermedio un piloto obtiene 2 de experiencia al usar el Nebula ." {
+    nebula.cambiarModoConduccion(intermedio)
+    nebula.esUsadoPor(novaIshari)
+    assert.equals(7, novaIshari.experiencia())
+  }
+test "Que el promedio de experiencia de los pilotos se calcula correctamente."{
+    centroDeSimulacion.agregarPilotos([novaIshari, kaelVarela ])
+
+    assert.equals(4, centroDeSimulacion.promedioExperienciaPilotos())
+
+
+}
+
+
+
+}
